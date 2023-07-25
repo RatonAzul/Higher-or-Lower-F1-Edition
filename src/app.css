@@ -1,3 +1,19 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@font-face
+{
+    font-family: 'Formula1Display';
+    font-weight: normal;
+    font-style: normal;
+    src: url('lib/assets/fonts/Formula1 Display-Regular.otf');
+}
+
+@font-face
+{
+    font-family: 'Formula1DisplayBold';
+    font-weight: bold;
+    font-style: bold;
+    src: url('lib/assets/fonts/Formula1 Display-Bold.otf');
+}

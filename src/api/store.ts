@@ -7,4 +7,6 @@ export const selected_eras = writable(new Map<string, boolean>([
     ["10s", false],
 ]));
 
+export const date_ranges = writable([[0,0]])
+
 

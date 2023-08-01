@@ -9,10 +9,12 @@
     $: clickMore(), name, driver;
     onMount(async () => {
       
-         let data = await getRandomSeason(2010, 2020);
+       /**
+        *   let data = await getRandomSeason(2010, 2020);
         driver = await getRandomDriver(data);
         console.log(driver)
         name = (await driver).givenName + " " + (await driver).familyName;
+       */
   });
     async function clickMore(){
        

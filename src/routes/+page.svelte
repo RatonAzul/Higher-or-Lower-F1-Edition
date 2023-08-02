@@ -1,9 +1,13 @@
 
-<main class=" font-f1display-bold container mx-auto h-5/6 flex flex-col">
+
+<main class=" font-f1display-bold container mx-auto h-screen flex flex-col">
+    
+    <!-- Header -->
+    <div class=" h-1/6"></div>
 
     <!-- Title -->
-    <div class=" h-5/6 w-full flex flex-col items-center justify-center p-4">
-        <h1 class=" 2xl:text-9xl xl:text-8xl lg:text-7xl md:text-6xl sm:text-5xl text-3xl text-center align-text-bottom leading-3 w-full">
+    <div class=" h-4/6 w-full flex flex-col items-center justify-center pt-4 ">
+        <h1 class=" 2xl:text-9xl xl:text-8xl lg:text-7xl md:text-6xl sm:text-5xl text-3xl text-center align-text-bottom w-full">
            
             <!-- More -->
             <img src="./imgs/arrow-up.png" alt="purple arrow pointing upwards" class="inline-block aspect-square">
@@ -19,7 +23,7 @@
         </h1>
 
          <!-- F1 Edition -->
-        <h3 class=" 2xl:text-7xl xl:text-6xl lg:text-5xl md:text-3xl sm:text-xl text-lg text-white leading-3">F1 Edition</h3>
+        <h3 class=" 2xl:text-7xl xl:text-6xl lg:text-5xl md:text-3xl sm:text-xl text-lg text-white xl:mt-4 mt-1">F1 Edition</h3>
     </div>
    
     <!-- Play Button -->
@@ -34,8 +38,8 @@
 
 <style>
     img{
-        height: 1.25em;
-        transform: translateY(-0.1em);
+        height: 0.75em;
+        transform: translateY(-0.08em);
     }
     .or{
         writing-mode: vertical-lr;

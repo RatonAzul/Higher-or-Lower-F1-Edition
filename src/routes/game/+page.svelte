@@ -3,10 +3,10 @@
 	import { getRandomDriver } from "../../api/getDriver";
     import { getRandomSeason } from "../../api/getRandomSeason";
 	import { Driver } from "../../data/Driver";
+	import DriverProfile from "../../components/era_selector/driver_profile.svelte";
 
     let name = "";
     let driver: Driver = new Driver("", "", "", 0, 0, 0, 0, 0)
-    $: clickMore(), name, driver;
     onMount(async () => {
       
        /**
@@ -16,58 +16,39 @@
         name = (await driver).givenName + " " + (await driver).familyName;
        */
   });
-    async function clickMore(){
-       
-        
-       
-       
-    }
+
+    let driver_1 = new Driver("alonso", "Fernando", "Alonso", 457, 75, 2200, 90, 32);
+    let driver_2 = new Driver("hamilton", "Max", "Verstappen", 457, 75, 2200, 90, 32);
+
 </script>
 
 <body class=" font-f1display text-white h-screen w-full flex portrait:flex-col">
 
     
         <!-- Left -->
-        <div class=" w-1/2 portrait:w-full landscape:border-e portrait:border-b border-white flex flex-col justify-between">
+        <div class=" w-1/2 portrait:w-full portrait:h-1/2 landscape:border-e portrait:border-b border-f1lightGray flex flex-col justify-between">
             <header class=" w-full">
-                <button>
-                    <a href="menu"> GO BACK </a>
-                </button>
+                <button class=" ps-4 pt-2"><a href="menu">
+                    <img src="imgs/arrow-back.png" alt="arrow pointing backwards" class="aspect-square inline-block back-arrow"> GO BACK </a></button>
             </header>
             
-            <section class="text-center flex flex-col">
-                <div class=" aspect-square h-72 bg-green-500 mb-4 ms-auto me-auto shadow-2xl"></div>
-                <h2 class=" font-f1display-bold text-5xl">{name}</h2>
-                <p class=" text-xl text-f1lightGray pt-1">has</p>
-                <h1 class=" font-f1display-bold text-7xl">{driver.wins}</h1>
-                <p class=" text-xl text-f1lightGray pt-1">wins</p>
-            </section>
+            <DriverProfile hasButtons={false} driver={driver_1}></DriverProfile>           
 
             <div></div>
         </div>
 
+        <div class=" absolute aspect-square md:h-24 h-16 rounded-full top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-f1darkGray
+         md:text-5xl text-3xl font-f1display-bold flex justify-center items-center">VS</div>
+
         <!-- Right -->
-        <div class=" w-1/2 portrait:w-full landscape:border-s portrait:border-t border-white flex flex-col justify-between">
+        <div class=" w-1/2 portrait:w-full portrait:h-1/2 landscape:border-s portrait:border-t border-f1lightGray flex flex-col justify-between">
             
             <header class=" w-full">
-                <button>
-                    <a href="menu"> TEMP </a>
-                </button>
+                <div class="ps-4 pt-2 invisible">.</div>
             </header>
 
-            <section class="text-center flex flex-col">
-                <div class=" aspect-square h-72 bg-green-500 mb-4 ms-auto me-auto shadow-2xl"></div>
-                <h2 class=" font-f1display-bold text-5xl">Max Verstappen</h2>
-                <p class=" text-xl text-f1lightGray pt-1">has</p>
-                <h1 class=" font-f1display-bold text-7xl">
-                     <button class="text-f1purple hover:scale-105 duration-500" on:click={clickMore}>MORE</button>
-                     <p class=" or rotate-180 text-3xl inline">OR</p>
-                     <button class="text-f1yellow hover:scale-105 duration-500">LESS</button>
-                </h1>
-                <p class=" text-xl text-f1lightGray pt-1">wins</p>
-               
-            </section>
-            
+            <DriverProfile hasButtons={true} driver={driver_2}></DriverProfile> 
+
             <div></div>
 
         </div>
@@ -76,8 +57,8 @@
 </body>
 
 <style>
-    .or{
-        writing-mode: vertical-lr;
-        text-orientation: sideways;
+    .back-arrow{
+        height: 1em;
+        transform: translateY(-0.05em);
     }
 </style>

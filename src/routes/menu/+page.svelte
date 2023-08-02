@@ -27,7 +27,7 @@
     start_game_available = false;
   }
   
-  function setStartingAndEndingDates(){
+  function set_starting_and_ending_dates(){
 
     let i = 0; // normal iterator
     let j = 0; // marks the number of date ranges (can be 0 or 1)
@@ -45,19 +45,36 @@
     }
 
   }
-  function handleClick(){
-    setStartingAndEndingDates()
+  function press_play_button(){
+    set_starting_and_ending_dates()
     console.log($date_ranges)
     goto("game");
+  }
+
+  function press_home_button(){
+    goto(".");
   }
   
 </script>
 
 <!-- Body -->
-<main class=" container mx-auto h-5/6">
+
+<main class=" container mx-auto h-screen">
+
+   <!-- Header -->
+  <header class=" h-1/6 font-f1display-bold w-full flex justify-center pt-4">
+    <button on:click={press_home_button} class="w-full">
+      <h1>
+        <span class=" text-f1purple portrait:md:text-5xl lg:text-5xl portrait:text-3xl text-2xl"><img src="imgs/arrow-up.png" alt="arrow pointing upwards" class=" inline-block aspect-square arrow me-2">MORE</span>
+        <span class=" text-white or rotate-180 portrait:md:text-xl md:text-xs lg:text-xl portrait:text-sm text-[0.7rem]">OR</span>
+        <span class=" text-f1yellow portrait:md:text-5xl lg:text-5xl portrait:text-3xl text-2xl ">LESS<img src="imgs/arrow-down.png" alt="arrow pointing downwards" class=" inline-block aspect-square arrow ms-2"></span>
+      </h1>
+      <p class=" text-white portrait:md:text-xl md:text-xs lg:text-xl portrait:text-sm text-[0.7rem]">F1 Edition</p>
+    </button>
+  </header>
 
   <!-- Cards -->
-  <div class=" h-5/6 w-full flex justify-around portrait:flex-col p-4">
+  <div class=" h-4/6 w-full flex justify-around portrait:flex-col ps-4 pe-4 pt-2">
     {#each eras as era }
       <EraSelector era={era}></EraSelector>
     {/each}
@@ -71,7 +88,7 @@
 
     <button class="xl:text-7xl lg:text-5xl portrait:md:text-4xl md:text-3xl sm:text-2xl text-3xl
       font-f1display text-white w-full h-full pb-8 md:pb-4 sm:pb-0"
-      on:click={handleClick}>
+      on:click={press_play_button}>
         <p>START GAME</p>
         <div class=" w-full border-b-4 lg:border-b-8 border-f1red animate-drawBorder duration-700 pb-4"></div>
     </button>
@@ -88,3 +105,15 @@
   </div>
   
 </main>
+
+<style>
+     .or{
+        writing-mode: vertical-lr;
+        text-orientation: sideways;
+    }
+    .arrow{
+        height: 0.75em;
+        transform: translateY(-0.08em);
+    }
+ 
+</style>

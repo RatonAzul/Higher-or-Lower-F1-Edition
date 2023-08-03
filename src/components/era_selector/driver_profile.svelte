@@ -9,7 +9,7 @@
     let urlName = '';
     let url = '';
     $: driver, urlName = `${driver.givenName}-${driver.familyName}`.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
-    $: driver, url = `https://www.racing-statistics.com/images/drivers/${urlName}/${urlName}.jpg`;
+    $: driver, url = urlName === '-' ? '' : `https://www.racing-statistics.com/images/drivers/${urlName}/${urlName}.jpg`;
 </script>
 
 

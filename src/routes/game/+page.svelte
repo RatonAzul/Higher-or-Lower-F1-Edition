@@ -4,25 +4,31 @@
     import { getRandomSeason } from "../../api/getRandomSeason";
 	import { Driver } from "../../data/Driver";
 	import DriverProfile from "../../components/era_selector/driver_profile.svelte";
+	import { date_ranges } from "../../api/store";
 
     onMount(async () => {
+    
+        [driver_1, driver_2] = await select_drivers();
       
-       /**
-        *   let data = await getRandomSeason(2010, 2020);
-        driver = await getRandomDriver(data);
-        console.log(driver)
-        name = (await driver).givenName + " " + (await driver).familyName;
-       */
-      select_random_driver()
   });
 
-    let driver_1 = new Driver("", "", "", 457, 75, 2200, 90, 32);
-    let driver_2 = new Driver("", "", "", 457, 75, 2200, 90, 32);
+    let driver_1 = new Driver("", "", "", 0, 0, 0, 0, 0);
+    let driver_2 = new Driver("", "", "", 0, 0, 0, 0, 0);
+
 
     async function select_random_driver(){
-        const season = await getRandomSeason(2010, 2023);
-        driver_1 = await getRandomDriver(season);
-        driver_2 = await getRandomDriver(season);
+        const [starting_date, ending_date] = select_date_ranges();
+        const season = await getRandomSeason(starting_date, ending_date);
+        return await getRandomDriver(season);
+    }
+
+    async function select_drivers() {
+        return await Promise.all([select_random_driver(), select_random_driver()]);
+    }
+
+    function select_date_ranges(){
+        const i = $date_ranges.length === 1 ? 0 : Math.round(Math.random());
+        return [$date_ranges[i][0], $date_ranges[i][1]]      
     }
 
 </script>

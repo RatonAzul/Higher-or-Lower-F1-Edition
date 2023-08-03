@@ -5,7 +5,11 @@
     export let hasButtons: boolean;
     export let driver: Driver;
 
-    let urlName = `${driver.givenName}-${driver.familyName}`.toLowerCase();
+    // getting the driver's image
+    let urlName = '';
+    let url = '';
+    $: driver, urlName = `${driver.givenName}-${driver.familyName}`.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+    $: driver, url = `https://www.racing-statistics.com/images/drivers/${urlName}/${urlName}.jpg`;
 </script>
 
 
@@ -14,7 +18,7 @@
     <!-- Driver Image -->
     <section class=" overflow-hidden aspect-square xl:h-72 md:portrait:h-48 h-36  mb-4 ms-auto me-auto shadow-2xl bg-red">
         <div class="image-div w-full h-full bg-cover hover:scale-105 duration-500" style="background-image: url('imgs/default.jpg');">
-          <div class="image-div w-full h-full bg-cover" style="background-image: url('https://www.racing-statistics.com/images/drivers/{urlName}/{urlName}.jpg');">
+          <div class="image-div w-full h-full bg-cover" style="background-image: url('{url}');">
           </div>
         </div>
     </section>

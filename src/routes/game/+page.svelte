@@ -5,8 +5,6 @@
 	import { Driver } from "../../data/Driver";
 	import DriverProfile from "../../components/era_selector/driver_profile.svelte";
 
-    let name = "";
-    let driver: Driver = new Driver("", "", "", 0, 0, 0, 0, 0)
     onMount(async () => {
       
        /**
@@ -15,10 +13,17 @@
         console.log(driver)
         name = (await driver).givenName + " " + (await driver).familyName;
        */
+      select_random_driver()
   });
 
-    let driver_1 = new Driver("alonso", "Fernando", "Alonso", 457, 75, 2200, 90, 32);
-    let driver_2 = new Driver("hamilton", "Max", "Verstappen", 457, 75, 2200, 90, 32);
+    let driver_1 = new Driver("", "", "", 457, 75, 2200, 90, 32);
+    let driver_2 = new Driver("", "", "", 457, 75, 2200, 90, 32);
+
+    async function select_random_driver(){
+        const season = await getRandomSeason(2010, 2023);
+        driver_1 = await getRandomDriver(season);
+        driver_2 = await getRandomDriver(season);
+    }
 
 </script>
 

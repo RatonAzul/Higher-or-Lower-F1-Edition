@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { selected_eras } from "../../api/store";
+    import { score, selected_eras } from "../../api/store";
 
     export let era: string[];
 
@@ -11,6 +11,7 @@
         colored === "filter-none" ? colored = "" : colored = "filter-none";
         blurred === "blur-sm" ? blurred = "" : blurred = "blur-sm";
         updateSelectedEra(era[0]);
+        $score = 0;
     }
 
 

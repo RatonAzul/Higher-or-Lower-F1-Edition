@@ -1,7 +1,11 @@
 
 <script lang="ts">
-	import { random_stat } from "../../api/store";
+	import { date_ranges, driver_1, driver_2, is_game_over, random_stat, score } from "../../api/store";
 	import type { Driver } from "../../data/Driver";
+	import { fix_driver_photo_url } from "../../utils/fix_driver_photo_url";
+	import { generate_driver_pair } from "../../utils/generate_driver_pair";
+	import { answer_is_correct } from "../../utils/round_utils";
+	import { select_one_driver, select_random_stat } from "../../utils/select_drivers";
 
     export let hasButtons: boolean;
     export let driver: Driver;
@@ -10,12 +14,36 @@
     let urlName = '';
     let url = '';
     $: driver, urlName = `${driver.givenName}-${driver.familyName}`.toLowerCase().replaceAll(' ', '-').normalize("NFD").replace(/[\u0300-\u036f]/g, "");
-    $: driver, url = urlName === '-' ? '' : `https://www.formula1points.com/images/driver/${urlName}.jpg`;
-    $: if (urlName === 'kimi-raikkonen') urlName = 'kimi-raikonnen'; // make fix function if there is more errors like this one;
+    $: url = `https://www.formula1points.com/images/driver/${urlName}.jpg`;
+    $: urlName = fix_driver_photo_url(urlName); 
    
     // getting the chosen stat and changing the text to singular if they only have one of the selected stat.
     let random_stat_text = '';
-    $: random_stat_text = driver[$random_stat] === 1 ? $random_stat.substring(0, $random_stat.length-1) : $random_stat;
+    $: random_stat_text = driver[$random_stat] === 1 && !hasButtons ? $random_stat.substring(0, $random_stat.length-1) : $random_stat;
+
+    // functions for both buttons
+    async function press_more(){
+       press_option("more");
+    }
+
+    async function press_less(){
+        press_option("less");
+    }
+
+    // when a button is pressed, the answer gets checked and the player gains a point or loses the game depending on the outcome
+    async function press_option(answer: string){
+
+        if (answer_is_correct(answer, $driver_1[$random_stat], $driver_2[$random_stat])) $score++;
+        else{ 
+            $is_game_over = true;
+            if (localStorage.getItem("high_score") === null) localStorage.setItem("high_score", "0");
+            if ($score > Number(localStorage.getItem("high_score"))) localStorage.setItem("high_score", $score.toString())
+        }
+
+        $driver_1 = $driver_2;
+        $driver_2 = await select_one_driver($date_ranges, $driver_1);
+        $random_stat = await select_random_stat($driver_1, $driver_2);   
+    }
 </script>
 
 
@@ -36,9 +64,9 @@
     <!-- More or Less buttons -->
     {#if hasButtons}  
     <h1 class=" font-f1display-bold 2xl:text-7xl xl:text-6xl md:portrait:text-5xl text-4xl">
-        <button class="text-f1purple hover:scale-105 duration-500"><img src="imgs/arrow-up.png" alt="arrow pointing upwards" class=" arrow inline-block me-3">MORE</button>
+        <button class="text-f1purple hover:scale-105 duration-500" on:click={press_more}><img src="imgs/arrow-up.png" alt="arrow pointing upwards" class=" arrow inline-block me-3">MORE</button>
         <p class=" or rotate-180 xl:text-3xl md:portrait:text-xl text-sm inline">OR</p>
-        <button class="text-f1yellow hover:scale-105 duration-500">LESS<img src="imgs/arrow-down.png" alt="arrow pointing downwards" class=" arrow inline-block ms-3"></button>
+        <button class="text-f1yellow hover:scale-105 duration-500" on:click={press_less}>LESS<img src="imgs/arrow-down.png" alt="arrow pointing downwards" class=" arrow inline-block ms-3"></button>
     </h1>
     
     <!-- Driver Stats -->

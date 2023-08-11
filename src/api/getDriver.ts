@@ -9,7 +9,7 @@ import { Driver } from "../data/Driver";
       const driver = drivers[randomIndex];
       const driverStats = await getRandomDriverStats(driver);
 
-      return new Driver(driver.driverId, driver.givenName, driver.familyName, driverStats.races, driverStats.retirements, driverStats.points, driverStats.podiums, driverStats.wins);
+      return new Driver(driver.driverId, driver.givenName, driver.familyName, driverStats.races, driverStats.retirements, driverStats.points, driverStats.podiums, driverStats.wins, true);
 
   }
 

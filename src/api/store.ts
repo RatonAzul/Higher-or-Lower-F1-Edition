@@ -12,10 +12,16 @@ export const date_ranges = writable([[0,0]])
 
 export const random_stat = writable<keyof Driver>('wins');
 
-// both drivers
-export const driver_1 = writable(new Driver("", "", "", 0, 0, 0, 0, 0));
-export const driver_2 = writable(new Driver("", "", "", 0, 0, 0, 0, 0));
+// both drivers + hidden one for the scroll animation
+export const driver_1 = writable(new Driver("", "", "", 0, 0, 0, 0, 0, false));
+export const driver_2 = writable(new Driver("", "", "", 0, 0, 0, 0, 0, true));
+export const driver_3 = writable(new Driver("", "", "", 0, 0, 0, 0, 0, true));
 
 export const score = writable(0);
 
 export const is_game_over = writable(false);
+
+// animations
+export const animation_state = writable(0);
+export const hidden_animation = writable(["landscape:translate-x-double_full portrait:translate-y-double_full", "landscape:translate-x-full portrait:translate-y-full duration-700"]);
+export const main_animation = writable(["landscape:translate-x-0 portrait:translate-y-0", "landscape:-translate-x-full portrait:-translate-y-full duration-700"]);

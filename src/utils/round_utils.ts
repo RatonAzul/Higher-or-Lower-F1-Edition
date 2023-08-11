@@ -1,4 +1,4 @@
-export function answer_is_correct(answer: string, stat_1: number | string, stat_2: number | string){
+export function answer_is_correct(answer: string, stat_1: number | string | boolean, stat_2: number | string | boolean){
     if (answer === "more"){
         return stat_1 < stat_2;
     }

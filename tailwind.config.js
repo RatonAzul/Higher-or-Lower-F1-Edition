@@ -4,6 +4,9 @@ export default {
   theme: {
    
     extend: {
+      screens: {
+        'xs': { 'raw': '(max-width: 300px), (max-height: 300px)' },
+      },
       fontFamily: {
           'f1display': ['Formula1Display'],
           'f1display-bold': ['Formula1DisplayBold']
@@ -14,6 +17,9 @@ export default {
           f1lightGray: '#b4b4b4',
           f1purple: '#C761D6',
           f1yellow: '#F8D500'
+        },
+        translate: {
+          'double_full': '200%',
         },
         animation: {
           horizontal: 'horizontal 30s ease-out infinite',

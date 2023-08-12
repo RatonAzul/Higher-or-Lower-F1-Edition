@@ -45,7 +45,7 @@
             for (let i = 0; i <= limit; i++){
                 // @ts-ignore
                 $driver_2[$random_stat] = i;
-                if (limit > 500 && i+1 <= limit) i++;
+                if (limit > 500 && i+2 <= limit) i += 2;
                 if (limit > 2000 && i+4 <= limit) i += 4;
                 await sleep(time);
             }
@@ -91,7 +91,7 @@
 <body class="text-center flex flex-col w-full">
     
     <!-- Driver Image -->
-    <section class=" overflow-hidden aspect-square xl:h-72 lg:h-48 md:portrait:h-48 h-28 xs:h-24  mb-4 ms-auto me-auto shadow-2xl bg-red">
+    <section class=" overflow-hidden aspect-square xl:h-72 lg:h-48 md:portrait:h-48 h-28 xs:h-24 xxs:h-16  mb-4 ms-auto me-auto shadow-2xl bg-red">
         <div class="image-div w-full h-full bg-cover hover:scale-105 duration-500" style="background-image: url('imgs/default.jpg');">
           <div class="image-div w-full h-full bg-cover bg-center" style="background-image: url('{url}');">
           </div>
@@ -99,23 +99,23 @@
     </section>
 
     <!-- Name -->
-    <h2 class=" font-f1display-bold 2xl:text-5xl xl:text-4xl lg:text-3xl md:portrait:text-3xl text-2xl xs:text-xl">{`${driver.given_name} ${driver.family_name}`}</h2>
-    <p class=" 2xl:text-2xl lg:text-xl md:portrait:text-xl text-base xs:text-sm text-f1lightGray pt-1">has</p>
+    <h2 class=" font-f1display-bold 2xl:text-5xl xl:text-4xl lg:text-3xl md:portrait:text-3xl text-2xl xs:text-xl xxs:text-lg">{`${driver.given_name} ${driver.family_name}`}</h2>
+    <p class=" 2xl:text-2xl lg:text-xl md:portrait:text-xl text-base xs:text-sm xxs:text-xs text-f1lightGray pt-1">has</p>
     
     <!-- More or Less buttons -->
     {#if driver.has_buttons}  
-    <h1 class=" font-f1display-bold 2xl:text-7xl xl:text-6xl lg:text-5xl md:portrait:text-5xl text-3xl xs:text-2xl">
+    <h1 class=" font-f1display-bold 2xl:text-7xl xl:text-6xl lg:text-5xl md:portrait:text-5xl text-3xl xs:text-2xl xxs:text-xl">
         <button class="text-f1purple hover:scale-105 duration-500" on:click={press_more}><img src="imgs/arrow-up.png" alt="arrow pointing upwards" class=" arrow inline-block me-3">MORE</button>
-        <p class=" or rotate-180 xl:text-3xl lg:text-xl md:portrait:text-xl text-xs inline">OR</p>
+        <p class=" or rotate-180 xl:text-3xl lg:text-xl md:portrait:text-xl text-xs xxs:text-[0.6rem] inline">OR</p>
         <button class="text-f1yellow hover:scale-105 duration-500" on:click={press_less}>LESS<img src="imgs/arrow-down.png" alt="arrow pointing downwards" class=" arrow inline-block ms-3"></button>
     </h1>
     
     <!-- Driver Stats -->
     {:else}  
-    <h1 class=" font-f1display-bold 2xl:text-7xl xl:text-6xl lg:text-5xl md:portrait:text-5xl text-4xl xs:text-2xl">{driver[$random_stat]}</h1>
+    <h1 class=" font-f1display-bold 2xl:text-7xl xl:text-6xl lg:text-5xl md:portrait:text-5xl text-4xl xs:text-2xl xxs:text-xl">{driver[$random_stat]}</h1>
     {/if}
 
-    <p class=" 2xl:text-2xl lg:text-xl md:portrait:text-xl text-base xs:text-sm text-f1lightGray pt-1">{random_stat_text}</p>
+    <p class=" 2xl:text-2xl lg:text-xl md:portrait:text-xl text-base xs:text-sm xxs:text-xs text-f1lightGray pt-1">{random_stat_text}</p>
 
 </body>
 

@@ -5,7 +5,8 @@ export default {
    
     extend: {
       screens: {
-        'xs': { 'raw': '(max-width: 300px), (max-height: 300px), (max-height: 700px) and (orientation: portrait), (max-width: 700px) and (orientation: landscape)' },
+        'xs': { 'raw': '(max-width: 300px), (max-height: 400px), (max-height: 700px) and (orientation: portrait), (max-width: 700px) and (orientation: landscape)' },
+        'xxs': { 'raw': '(max-height: 300px)'}
       },
       fontFamily: {
           'f1display': ['Formula1Display'],

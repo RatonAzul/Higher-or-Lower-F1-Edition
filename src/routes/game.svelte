@@ -35,14 +35,14 @@
 <body class=" font-f1display text-white h-screen w-full flex portrait:flex-col relative">
   
         <!-- Left -->
-        <div class=" w-1/2 portrait:w-full portrait:h-1/2 landscape:border-e portrait:border-b border-f1lightGray flex flex-col justify-center">
+        <div class=" w-1/2 portrait:w-full portrait:h-1/2 landscape:border-e portrait:border-b border-f1lightGray flex flex-col justify-top">
             <header class=" absolute top-0 landscape:w-1/2 w-full flex justify-between">
-                <button class=" ps-4 pe-4 pt-2 lg:text-xl md:portrait:text-xl text-lg xs:text-sm hover:underline z-10" on:click={() => $application_state = "menu"}>
+                <button class=" ps-4 pe-4 pt-2 lg:text-xl md:portrait:text-xl text-lg xs:text-sm xxs:text-xs hover:underline z-10" on:click={() => $application_state = "menu"}>
                     <img src="imgs/arrow-back.png" alt="arrow pointing backwards" class="aspect-square inline-block back-arrow"> GO BACK 
                 </button>
 
                 <!-- Score Landscape -->
-                <p class="pe-4 pt-2 text-center text-f1lightGray portrait:hidden lg:text-xl md:text-lg text-sm">
+                <p class="pe-4 pt-2 text-center text-f1lightGray portrait:hidden lg:text-xl md:text-lg text-sm xxs:text-xs">
                     <span class="lg:block hidden">Current score</span>
                     <span class="lg:hidden">Current score:</span>
                     <span class=" lg:text-3xl text-white">{$score}</span>
@@ -57,7 +57,7 @@
             </header>
             
             <!-- Driver Profile -->
-            <div class="{$main_animation[$animation_state]} h-full flex justify-center items-center pt-8">
+            <div class="{$main_animation[$animation_state]} portrait:h-full lg:landscape:h-full h-[85%]  flex justify-center items-center pt-8">
                 <DriverProfile driver={$driver_1}></DriverProfile>     
             </div>     
         </div>
@@ -76,12 +76,12 @@
         </div>
 
         <!-- Right -->
-        <div class=" w-1/2 portrait:w-full portrait:h-[] landscape:border-s portrait:border-t border-f1lightGray flex flex-col justify-center">
+        <div class=" w-1/2 portrait:w-full portrait:h-[] landscape:border-s portrait:border-t border-f1lightGray flex flex-col justify-top">
             
             <header class=" absolute top-0 landscape:w-1/2 w-full flex justify-between">
 
                 <!-- Score Landscape -->
-                <p class="ps-4 pt-2 text-center text-f1lightGray portrait:hidden lg:text-xl md:text-lg text-sm">
+                <p class="ps-4 pt-2 text-center text-f1lightGray portrait:hidden lg:text-xl md:text-lg text-sm xxs:text-xs">
                     <span class="lg:block hidden">High score</span>
                     <span class="lg:hidden">High score:</span>
                     <span class=" lg:text-3xl text-white">{high_score}</span>
@@ -89,7 +89,7 @@
             </header>
 
             <!-- Driver Profile -->
-            <div class="{$main_animation[$animation_state]} h-full w-full flex justify-center items-center pt-8">
+            <div class="{$main_animation[$animation_state]} portrait:h-full lg:landscape:h-full h-[85%] w-full flex justify-center items-center pt-8">
                 <DriverProfile driver={$driver_2}></DriverProfile>     
             </div>
 
@@ -97,37 +97,37 @@
         </div>
 
         <!-- Hidden -->
-        <div class=" float-right absolute h-full w-1/2 portrait:w-full portrait:h-1/2 flex justify-center items-center pt-8 {$hidden_animation[$animation_state]}">  
+        <div class=" float-right absolute portrait:h-full lg:landscape:h-full h-[85%] w-1/2 portrait:w-full flex justify-top items-center pt-8 {$hidden_animation[$animation_state]}">  
             <DriverProfile driver={$driver_3}></DriverProfile>
         </div>
 </body>
 
 {:else}
 <!-- Losing Screen -->
-<body class=" text-white font-f1display-bold">
+<body class=" h-screen text-white font-f1display-bold flex justify-center items-center xs:items-start xs:pt-4 xxs:ps-2">
     
     <div class=" container text-center">
 
         <!-- Score -->
-        <h3 class=" lg:text-7xl md:text-5xl text-4xl p-2">Your score was</h3>
-        <h1 class=" lg:text-8xl md:text-6xl text-5xl p-2">{$score}
+        <h3 class=" lg:text-7xl md:text-5xl text-4xl xs:text-3xl xxs:text-2xl  xs:p-1 p-2">Your score was</h3>
+        <h1 class=" lg:text-8xl md:text-6xl text-5xl xs:text-4xl xxs:text-3xl xs:p-1 p-2">{$score}
 
             <!-- New Record Marker -->
             {#if $score === Number(localStorage.getItem("high_score"))}
-            <div class=" absolute inline-block md:text-sm text-xs font-f1display bg-green-600 rounded-3xl w-36 p-2">NEW RECORD!</div>
+            <div class=" absolute inline-block md:text-sm text-xs xs:text-[0.6rem] font-f1display bg-green-600 rounded-3xl w-36 xs:w-24 p-2 xs:p-1 ms-2">NEW RECORD!</div>
             {/if}
         </h1>
-        <p class=" text-f1lightGray font-f1display lg:text-2xl md:text-lg text-base border-f1red border-b-2 lg:pb-5  pb-3">"{select_random_game_over_phrase($score)}"</p>
+        <p class=" text-f1lightGray font-f1display lg:text-2xl md:text-lg text-base xs:text-sm xxs:text-xs border-f1red border-b-2 lg:pb-5 pb-3 xs:pb-2">"{select_random_game_over_phrase($score)}"</p>
         
         <!-- Try again Button -->
-        <button class=" font-f1display text-white bg-f1red lg:text-2xl md:text-lg text-base mt-7 lg:pt-4 lg:pb-4 pt-2 pb-2 ps-20 pe-20 rounded-lg box-content border-2 border-transparent
+        <button class=" font-f1display text-white bg-f1red lg:text-2xl md:text-lg text-base xs:text-sm xxs:text-xs mt-7 lg:pt-4 lg:pb-4 pt-2 pb-2 ps-20 pe-20 rounded-lg box-content border-2 border-transparent
          focus:border-white hover:border-white " on:click={reset_game}>
             Try again
         </button>
         <br>
 
         <!-- Return Button -->
-        <button class=" font-f1display text-f1lightGray lg:text-2xl md:text-lg text-base border-f1lightGray border-b-2 pt-5" on:click={() => {$application_state = "menu"; reset_game(); }}>
+        <button class=" font-f1display text-f1lightGray lg:text-2xl md:text-lg text-base xs:text-sm xxs:text-xs border-f1lightGray border-b-2 pt-5" on:click={() => {$application_state = "menu"; reset_game(); }}>
             Return to menu
         </button>
       

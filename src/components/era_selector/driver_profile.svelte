@@ -49,15 +49,13 @@
                 if (limit > 2000 && i+4 <= limit) i += 4;
                 await sleep(time);
             }
-            
 
         if (answer_is_correct(answer, $driver_1[$random_stat], $driver_2[$random_stat])){
             $score++;
 
             // circle animation
             $circle_state = 1;
-            await sleep(700);
-            $circle_state = 0;
+            await sleep(500);
             $driver_3 = await select_one_driver($date_ranges, $driver_2, $driver_1);
                            
             // scroll animation plays
@@ -72,8 +70,7 @@
         else{ 
             // circle animation
             $circle_state = 2;
-            await sleep(700);
-            $circle_state = 0;
+            await sleep(500);
 
             $is_game_over = true;
 
@@ -85,7 +82,7 @@
             [$driver_1, $driver_2] = await generate_driver_pair($date_ranges);
             $driver_1.has_buttons = false;
         }
-
+        $circle_state = 0;
         $random_stat = await select_random_stat($driver_1, $driver_2);   
     }
 </script>

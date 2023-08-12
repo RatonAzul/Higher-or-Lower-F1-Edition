@@ -63,8 +63,8 @@
         </div>
 
          <!-- VS circle -->
-        <div class=" absolute aspect-square lg:h-24 md:portrait:h-20 h-16 lg:text-5xl md:portrait:text-4xl text-3xl rounded-full top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 {$circle_animation[$circle_state]}
-         lg:text-5xl text-3xl font-f1display-bold flex justify-center items-center">
+        <div class=" absolute aspect-square lg:h-24 md:portrait:h-20 h-16 xs:h-12 lg:text-5xl md:portrait:text-4xl text-3xl rounded-full top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 {$circle_animation[$circle_state]}
+         lg:text-5xl text-3xl xs:text-xl font-f1display-bold flex justify-center items-center">
         
          {#if $circle_state === 1}
             <img src="imgs/check.png" alt="check in a green circle" class="circle_icons">

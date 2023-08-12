@@ -40,7 +40,7 @@
             //different speeds depending on the number
             let time = 25;
             if (limit > 100) time = 5;
-            if (limit > 1000) time = 1;
+            if (limit > 500) time = 1;
 
             for (let i = 0; i <= limit; i++){
                 // @ts-ignore

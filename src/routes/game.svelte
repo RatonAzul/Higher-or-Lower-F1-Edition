@@ -76,7 +76,7 @@
         </div>
 
         <!-- Right -->
-        <div class=" w-1/2 portrait:w-full portrait:h-1/2 landscape:border-s portrait:border-t border-f1lightGray flex flex-col justify-center">
+        <div class=" w-1/2 portrait:w-full portrait:h-[] landscape:border-s portrait:border-t border-f1lightGray flex flex-col justify-center">
             
             <header class=" absolute top-0 landscape:w-1/2 w-full flex justify-between">
 

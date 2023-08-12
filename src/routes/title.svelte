@@ -15,7 +15,7 @@
     <div class=" h-1/6"></div>
 
     <!-- Title -->
-    <div class=" h-4/6 w-full flex flex-col items-center justify-center pt-4 ">
+    <div class=" portrait:h-2/6 h-3/6 w-full flex flex-col items-center justify-center pt-4 ">
         <h1 class=" 2xl:text-9xl xl:text-8xl lg:text-7xl md:text-6xl sm:text-5xl text-3xl text-center align-text-bottom w-full">
            
             <!-- More -->

@@ -25,7 +25,7 @@ export async function get_random_season(starting_year: number, ending_year: numb
 async function fetch_random_season(year: number){
     
     // fetch season
-    const response = await fetch(`http://ergast.com/api/f1/${year}/drivers.json?limit=100`);   
+    const response = await fetch(`https://ergast.com/api/f1/${year}/drivers.json?limit=100`);   
     if (!response.ok) throw new Error('Network response was not ok.');
     
     const data = await response.json();

@@ -35,7 +35,7 @@ import { Driver } from "../data/Driver";
   async function fetch_random_driver_stats(driver: any) {
 
     // make the api request to get the driver standings each race
-    const response = await fetch(`http://ergast.com/api/f1/drivers/${driver.driverId}/results.json?limit=500`);
+    const response = await fetch(`https://ergast.com/api/f1/drivers/${driver.driverId}/results.json?limit=500`);
     const data = await response.json();
     const results = data?.MRData?.RaceTable?.Races;
 

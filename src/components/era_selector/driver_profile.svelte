@@ -55,7 +55,6 @@
             $score++;
 
             // circle animation
-            await sleep(500);
             $circle_state = 1;
             await sleep(700);
             $circle_state = 0;
@@ -72,7 +71,6 @@
         } 
         else{ 
             // circle animation
-            await sleep(500);
             $circle_state = 2;
             await sleep(700);
             $circle_state = 0;

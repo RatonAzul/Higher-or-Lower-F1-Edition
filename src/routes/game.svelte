@@ -1,11 +1,11 @@
 <script lang="ts">
 	import { onMount } from "svelte";
-	import { Driver } from "../../data/Driver";
-	import DriverProfile from "../../components/era_selector/driver_profile.svelte";
-	import { date_ranges, random_stat, driver_1, driver_2, score, is_game_over, hidden_animation, animation_state, main_animation, driver_3, circle_animation, circle_state } from "../../api/store";	import { select_drivers, select_random_stat } from "../../utils/select_drivers";
-	import { generate_driver_pair } from "../../utils/generate_driver_pair";
+	import { Driver } from "../data/Driver";
+	import DriverProfile from "../components/era_selector/driver_profile.svelte";
+	import { date_ranges, random_stat, driver_1, driver_2, score, is_game_over, hidden_animation, animation_state, main_animation, driver_3, circle_animation, circle_state, application_state } from "../api/store";	import { select_drivers, select_random_stat } from "../utils/select_drivers";
+	import { generate_driver_pair } from "../utils/generate_driver_pair";
 	import { goto } from "$app/navigation";
-	import { select_random_game_over_phrase } from "../../utils/round_utils";
+	import { select_random_game_over_phrase } from "../utils/round_utils";
 
     onMount(async () => {
     
@@ -36,7 +36,7 @@
         <!-- Left -->
         <div class=" w-1/2 portrait:w-full portrait:h-1/2 landscape:border-e portrait:border-b border-f1lightGray flex flex-col justify-center">
             <header class=" absolute top-0 landscape:w-1/2 w-full flex justify-between">
-                <button class=" ps-4 pe-4 pt-2 lg:text-xl md:portrait:text-xl text-lg xs:text-sm hover:underline z-10" on:click={() => goto("menu")}>
+                <button class=" ps-4 pe-4 pt-2 lg:text-xl md:portrait:text-xl text-lg xs:text-sm hover:underline z-10" on:click={() => $application_state = "menu"}>
                     <img src="imgs/arrow-back.png" alt="arrow pointing backwards" class="aspect-square inline-block back-arrow"> GO BACK 
                 </button>
 
@@ -126,7 +126,7 @@
         <br>
 
         <!-- Return Button -->
-        <button class=" font-f1display text-f1lightGray lg:text-2xl md:text-lg text-base border-f1lightGray border-b-2 pt-5" on:click={() => {goto("menu"); reset_game(); }}>
+        <button class=" font-f1display text-f1lightGray lg:text-2xl md:text-lg text-base border-f1lightGray border-b-2 pt-5" on:click={() => {$application_state = "menu"; reset_game(); }}>
             Return to menu
         </button>
       

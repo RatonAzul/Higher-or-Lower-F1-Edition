@@ -28,3 +28,6 @@ export const main_animation = writable(["landscape:translate-x-0 portrait:transl
 
 export const circle_state = writable(0);
 export const circle_animation = writable(["bg-f1darkGray scale-100", "bg-green-600 scale-110 -rotate-12 duration-500", "bg-f1red scale-110 rotate-12 duration-500"])
+
+// app state
+export const application_state = writable("title");

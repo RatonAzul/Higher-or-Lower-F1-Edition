@@ -1,6 +1,6 @@
 <script lang="ts">
-	import EraSelector from "../../components/era_selector/era_selector.svelte";
-  import { selected_eras, date_ranges } from "../../api/store";
+	import EraSelector from "../components/era_selector/era_selector.svelte";
+  import { selected_eras, date_ranges, application_state } from "../api/store";
 	import { goto } from "$app/navigation";
   let eras = [["50s", "60s"],["70s", "80s"],["90s", "00s"],["10s", "20s"]];
   let years = [[1950, 1969],[1970, 1989],[1990, 2009],[2010, new Date().getFullYear()]]
@@ -46,15 +46,11 @@
 
   }
   function press_play_button(){
-    set_starting_and_ending_dates()
-    console.log($date_ranges)
-    goto("game");
+    set_starting_and_ending_dates();
+    $application_state = "game";
   }
 
-  function press_home_button(){
-    goto(".");
-  }
-  
+
 </script>
 
 <!-- Body -->
@@ -63,7 +59,7 @@
 
    <!-- Header -->
   <header class=" h-1/6 font-f1display-bold w-full flex justify-center pt-4">
-    <button on:click={press_home_button} class="w-full">
+    <button on:click={() => {$application_state = "title"}} class="w-full">
       <h1>
         <span class=" text-f1purple portrait:md:text-5xl lg:text-5xl portrait:text-3xl text-2xl"><img src="imgs/arrow-up.png" alt="arrow pointing upwards" class=" inline-block aspect-square arrow me-2">MORE</span>
         <span class=" text-white or rotate-180 portrait:md:text-xl md:text-xs lg:text-xl portrait:text-sm text-[0.7rem]">OR</span>

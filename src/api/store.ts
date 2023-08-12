@@ -25,3 +25,6 @@ export const is_game_over = writable(false);
 export const animation_state = writable(0);
 export const hidden_animation = writable(["landscape:translate-x-double_full portrait:translate-y-double_full", "landscape:translate-x-full portrait:translate-y-full duration-700"]);
 export const main_animation = writable(["landscape:translate-x-0 portrait:translate-y-0", "landscape:-translate-x-full portrait:-translate-y-full duration-700"]);
+
+export const circle_state = writable(0);
+export const circle_animation = writable(["bg-f1darkGray scale-100", "bg-green-600 scale-110 -rotate-12 duration-500", "bg-f1red scale-110 rotate-12 duration-500"])

@@ -2,7 +2,7 @@
 	import { onMount } from "svelte";
 	import { Driver } from "../../data/Driver";
 	import DriverProfile from "../../components/era_selector/driver_profile.svelte";
-	import { date_ranges, random_stat, driver_1, driver_2, score, is_game_over, hidden_animation, animation_state, main_animation, driver_3 } from "../../api/store";	import { select_drivers, select_random_stat } from "../../utils/select_drivers";
+	import { date_ranges, random_stat, driver_1, driver_2, score, is_game_over, hidden_animation, animation_state, main_animation, driver_3, circle_animation, circle_state } from "../../api/store";	import { select_drivers, select_random_stat } from "../../utils/select_drivers";
 	import { generate_driver_pair } from "../../utils/generate_driver_pair";
 	import { goto } from "$app/navigation";
 	import { select_random_game_over_phrase } from "../../utils/round_utils";
@@ -61,8 +61,18 @@
             </div>     
         </div>
 
-        <div class=" absolute aspect-square md:h-24 h-16 rounded-full top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-f1darkGray
-         md:text-5xl text-3xl font-f1display-bold flex justify-center items-center">VS</div>
+         <!-- VS circle -->
+        <div class=" absolute aspect-square md:h-24 h-16 rounded-full top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 {$circle_animation[$circle_state]}
+         md:text-5xl text-3xl font-f1display-bold flex justify-center items-center">
+        
+         {#if $circle_state === 1}
+            <img src="imgs/check.png" alt="check in a green circle" class=" md:text-5xl text-3xl circle_icons">
+        {:else if $circle_state === 2}
+            <img src="imgs/cross.png" alt="cross in a red circle" class=" md:text-5xl text-3xl circle_icons">
+        {:else}
+            VS
+        {/if}
+        </div>
 
         <!-- Right -->
         <div class=" w-1/2 portrait:w-full portrait:h-1/2 landscape:border-s portrait:border-t border-f1lightGray flex flex-col justify-center">
@@ -103,7 +113,7 @@
 
             <!-- New Record Marker -->
             {#if $score === Number(localStorage.getItem("high_score"))}
-            <div class=" absolute inline-block text-sm font-f1display bg-green-600 rounded-3xl w-36 p-2">NEW RECORD!</div>
+            <div class=" absolute inline-block md:text-sm text-xs font-f1display bg-green-600 rounded-3xl w-36 p-2">NEW RECORD!</div>
             {/if}
         </h1>
         <p class=" text-f1lightGray font-f1display lg:text-2xl md:text-lg text-base border-f1red border-b-2 lg:pb-5  pb-3">"{select_random_game_over_phrase($score)}"</p>
@@ -130,5 +140,8 @@
     .back-arrow{
         height: 1em;
         transform: translateY(-0.05em);
+    }
+    .circle_icons{
+        height: 1em;
     }
 </style>

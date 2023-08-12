@@ -1,6 +1,6 @@
 
 <script lang="ts">
-	import { animation_state, date_ranges, driver_1, driver_2, driver_3, hidden_animation, is_game_over, random_stat, score } from "../../api/store";
+	import { animation_state, circle_state, date_ranges, driver_1, driver_2, driver_3, hidden_animation, is_game_over, random_stat, score } from "../../api/store";
 	import type { Driver } from "../../data/Driver";
 	import { fix_driver_photo_url } from "../../utils/fix_driver_photo_url";
 	import { generate_driver_pair } from "../../utils/generate_driver_pair";
@@ -49,16 +49,18 @@
                 if (limit > 2000 && i+4 <= limit) i += 4;
                 await sleep(time);
             }
-            await sleep(500);
+            
 
         if (answer_is_correct(answer, $driver_1[$random_stat], $driver_2[$random_stat])){
             $score++;
-            
 
+            // circle animation
+            await sleep(500);
+            $circle_state = 1;
+            await sleep(500);
+            $circle_state = 0;
             $driver_3 = await select_one_driver($date_ranges, $driver_2);
-            
-            
-            
+                           
             // scroll animation plays
             $animation_state = 1;
             await sleep(1000);
@@ -69,9 +71,19 @@
             $driver_2.has_buttons = true;
         } 
         else{ 
+            // circle animation
+            await sleep(500);
+            $circle_state = 2;
+            await sleep(500);
+            $circle_state = 0;
+
             $is_game_over = true;
+
+            //store high score
             if (localStorage.getItem("high_score") === null) localStorage.setItem("high_score", "0");
             if ($score > Number(localStorage.getItem("high_score"))) localStorage.setItem("high_score", $score.toString());
+
+            // generate the next pair of drivers
             [$driver_1, $driver_2] = await generate_driver_pair($date_ranges);
             $driver_1.has_buttons = false;
         }

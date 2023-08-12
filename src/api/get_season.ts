@@ -1,20 +1,21 @@
-function generateRandomYear(starting_year: number, ending_year: number): number{
+function generate_random_year(starting_year: number, ending_year: number): number{
     return Math.floor(Math.random() * (ending_year - starting_year + 1) + starting_year);
 }
 
-export async function getRandomSeason(starting_year: number, ending_year: number) {
+// choose a random year in the given time frame and return said season
+export async function get_random_season(starting_year: number, ending_year: number) {
     
-    const randomYear: number = generateRandomYear(starting_year, ending_year);
+    const random_year: number = generate_random_year(starting_year, ending_year);
 
     // if the season's info is not stored in localstorage, it gets fetched and saved
-    if (localStorage.getItem(randomYear.toString()) === null){
+    if (localStorage.getItem(random_year.toString()) === null){
         console.log("Season gotten from Request")
-        return await fetch_random_season(randomYear);
+        return await fetch_random_season(random_year);
     }
 
     // else it gets called from storage
     console.log("Season gotten from Storage")
-    const season = localStorage.getItem(randomYear.toString());
+    const season = localStorage.getItem(random_year.toString());
     if (season != null) return season;
 
     return '';

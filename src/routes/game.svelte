@@ -4,9 +4,9 @@
 	import DriverProfile from "../components/era_selector/driver_profile.svelte";
 	import { date_ranges, random_stat, driver_1, driver_2, score, is_game_over, hidden_animation, animation_state, main_animation, driver_3, circle_animation, circle_state, application_state } from "../api/store";	import { select_drivers, select_random_stat } from "../utils/select_drivers";
 	import { generate_driver_pair } from "../utils/generate_driver_pair";
-	import { goto } from "$app/navigation";
 	import { select_random_game_over_phrase } from "../utils/round_utils";
 
+    // generate the random drivers and the random stat. set the first driver to show the stats and not the buttons
     onMount(async () => {
     
        [$driver_1, $driver_2] = await generate_driver_pair($date_ranges);
@@ -25,6 +25,7 @@
         $score = 0;
     }
 
+    // save score as high score if needed
     let high_score = localStorage.getItem("high_score");
     if (high_score === null) high_score = "0";
 
@@ -51,7 +52,7 @@
                 <p class=" landscape:hidden pe-4 pt-2 text-center text-f1lightGray md:portrait:text-xl text-base xs:text-sm">
                     <span> Current score: <span class=" text-white">{$score}</span></span>
                     <br>
-                    <span> Highest score: <span class=" text-white">{high_score}</span></span>
+                    <span> High score: <span class=" text-white">{high_score}</span></span>
                 </p>
             </header>
             
@@ -81,8 +82,8 @@
 
                 <!-- Score Landscape -->
                 <p class="ps-4 pt-2 text-center text-f1lightGray portrait:hidden lg:text-xl md:text-lg text-sm">
-                    <span class="lg:block hidden">Highest score</span>
-                    <span class="lg:hidden">Highest score:</span>
+                    <span class="lg:block hidden">High score</span>
+                    <span class="lg:hidden">High score:</span>
                     <span class=" lg:text-3xl text-white">{high_score}</span>
                 </p>
             </header>

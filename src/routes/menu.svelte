@@ -1,7 +1,6 @@
 <script lang="ts">
 	import EraSelector from "../components/era_selector/era_selector.svelte";
   import { selected_eras, date_ranges, application_state } from "../api/store";
-	import { goto } from "$app/navigation";
   let eras = [["50s", "60s"],["70s", "80s"],["90s", "00s"],["10s", "20s"]];
   let years = [[1950, 1969],[1970, 1989],[1990, 2009],[2010, new Date().getFullYear()]]
 
@@ -82,6 +81,7 @@
     <!-- Start game button -->
     {#if start_game_available}
 
+    <!-- Available -->
     <button class="xl:text-7xl lg:text-5xl portrait:md:text-4xl md:text-3xl sm:text-2xl text-3xl
       font-f1display text-white w-full h-full pb-8 md:pb-4 sm:pb-0"
       on:click={press_play_button}>
@@ -89,6 +89,7 @@
         <div class=" w-full border-b-4 lg:border-b-8 border-f1red animate-drawBorder duration-700 md:pb-4 pb-1"></div>
     </button>
 
+    <!-- Unavailable -->
        {:else} 
        <button class="xl:text-7xl lg:text-5xl portrait:md:text-4xl md:text-3xl xs:text-2xl text-3xl
         font-f1display text-f1lightGray w-full h-full pb-8 md:pb-4 xs:pb-2">

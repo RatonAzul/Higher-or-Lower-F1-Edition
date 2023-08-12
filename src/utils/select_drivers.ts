@@ -1,12 +1,12 @@
-import { getRandomDriver } from "../api/getDriver";
-import { getRandomSeason } from "../api/getRandomSeason";
+import { get_random_driver } from "../api/get_driver";
+import { get_random_season } from "../api/get_season";
 import type { Driver } from "../data/Driver";
 
 // select  random driver from a certain era
 export async function select_random_driver(date_ranges: number[][]){
     const [starting_date, ending_date] = select_date_ranges(date_ranges);
-    const season = await getRandomSeason(starting_date, ending_date);
-    return await getRandomDriver(season);
+    const season = await get_random_season(starting_date, ending_date);
+    return await get_random_driver(season);
 }
 
 // select two different drivers with at least one different stat
@@ -26,13 +26,15 @@ export async function select_drivers(date_ranges: number[][]) {
 export async function select_one_driver(date_ranges: number[][], driver_2: Driver, driver_3?: Driver) {
     let driver_1 = await select_random_driver(date_ranges);
 
-    // 
+    // if third driver is entered
     if (driver_3 != undefined){
         while(reroll_is_needed(driver_1, driver_2) || reroll_is_needed(driver_1, driver_3)){
             driver_1 = await select_random_driver(date_ranges);
         }
         return driver_1;
     }
+
+    // only two drivers
     while(reroll_is_needed(driver_1, driver_2)){
         driver_1 = await select_random_driver(date_ranges);
     }
@@ -48,7 +50,7 @@ function select_date_ranges(date_ranges: number[][]){
 
 // returns a boolean indicating true if both of the chosen drivers are the same one or if they have the same stats
 function reroll_is_needed(driver_1: Driver, driver_2: Driver){
-    if (driver_1.driverId === driver_2.driverId) return true;
+    if (driver_1.driver_id === driver_2.driver_id) return true;
 
     // check if all four stats are the same
     return driver_1.podiums === driver_2.podiums && driver_1.points === driver_2.points && driver_1.races === driver_2.races 

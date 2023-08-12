@@ -5,6 +5,7 @@ export function answer_is_correct(answer: string, stat_1: number | string | bool
     return stat_1 > stat_2;
 }
 
+// selection of a random phrase to show at the game over screen, depending on the achieved score
 const phrases = {"low": ["I think Ericsson hit us", "GP2 Engine, GP2... ARGHHH!", "I am stupid. I am stupid"], 
                 "medium": ["Leave me alone, I know what I’m doing.", "Not bad for a number 2 driver", "Valtteri, it’s James..."], 
                 "high": ["Lewis, it's hammer time", "DU BIST WELTMEISTER", "Smooth operatooooor!"]};

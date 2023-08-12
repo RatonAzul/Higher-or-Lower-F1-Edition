@@ -1,19 +1,20 @@
 import { Driver } from "../data/Driver";
 
-  export async function getRandomDriver(data_string: string) {
+  // take a stringified json of a season and return a randomly chosen driver as a new Driver object
+  export async function get_random_driver(data_string: string) {
 
       const data = JSON.parse(data_string);
       const drivers = data?.MRData?.DriverTable?.Drivers;
    
-      const randomIndex = Math.floor(Math.random() * drivers.length);
-      const driver = drivers[randomIndex];
-      const driverStats = await getRandomDriverStats(driver);
+      const random_index = Math.floor(Math.random() * drivers.length);
+      const driver = drivers[random_index];
+      const driver_stats = await get_random_driver_stats(driver);
 
-      return new Driver(driver.driverId, driver.givenName, driver.familyName, driverStats.races, driverStats.retirements, driverStats.points, driverStats.podiums, driverStats.wins, true);
+      return new Driver(driver.driverId, driver.givenName, driver.familyName, driver_stats.races, driver_stats.retirements, driver_stats.points, driver_stats.podiums, driver_stats.wins, true);
 
   }
 
-  async function getRandomDriverStats(driver: any){
+  async function get_random_driver_stats(driver: any){
 
     const driver_name = `${driver.givenName} ${driver.familyName}`;
 
@@ -59,6 +60,7 @@ import { Driver } from "../data/Driver";
     return stats;
   }
 
+  // parse the stats of a driver into a string to store them in the local storage
   function parse_stats(stats_string: string) {
     const [races, retirements, points, podiums, wins] = stats_string.split(',').map(Number);
     return { races, retirements, points, podiums, wins };

@@ -1,6 +1,6 @@
 
 <script lang="ts">
-	import { animation_state, circle_state, date_ranges, driver_1, driver_2, driver_3, hidden_animation, is_game_over, random_stat, score } from "../../api/store";
+	import { animation_state, circle_state, date_ranges, driver_1, driver_2, driver_3, is_game_over, random_stat, score } from "../../api/store";
 	import type { Driver } from "../../data/Driver";
 	import { fix_driver_photo_url } from "../../utils/fix_driver_photo_url";
 	import { generate_driver_pair } from "../../utils/generate_driver_pair";
@@ -11,11 +11,11 @@
     export let driver: Driver;
 
     // getting the driver's image
-    let urlName = '';
+    let url_name = '';
     let url = '';
-    $: driver, urlName = `${driver.givenName}-${driver.familyName}`.toLowerCase().replaceAll(' ', '-').normalize("NFD").replace(/[\u0300-\u036f]/g, "");
-    $: url = `https://www.formula1points.com/images/driver/${urlName}.jpg`;
-    $: urlName = fix_driver_photo_url(urlName); 
+    $: driver, url_name = `${driver.given_name}-${driver.family_name}`.toLowerCase().replaceAll(' ', '-').normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+    $: url = `https://www.formula1points.com/images/driver/${url_name}.jpg`;
+    $: url_name = fix_driver_photo_url(url_name); 
    
     // getting the chosen stat and changing the text to singular if they only have one of the selected stat.
     let random_stat_text = '';
@@ -104,7 +104,7 @@
     </section>
 
     <!-- Name -->
-    <h2 class=" font-f1display-bold 2xl:text-5xl xl:text-4xl lg:text-3xl md:portrait:text-3xl text-2xl xs:text-xl">{`${driver.givenName} ${driver.familyName}`}</h2>
+    <h2 class=" font-f1display-bold 2xl:text-5xl xl:text-4xl lg:text-3xl md:portrait:text-3xl text-2xl xs:text-xl">{`${driver.given_name} ${driver.family_name}`}</h2>
     <p class=" 2xl:text-2xl lg:text-xl md:portrait:text-xl text-base xs:text-sm text-f1lightGray pt-1">has</p>
     
     <!-- More or Less buttons -->

@@ -17,10 +17,3 @@
         <Game></Game>
     {/if}
 </body>
-
-<style>
-    body{
-        height: 100vh;
-        height: 100dvh;
-    }
-</style>

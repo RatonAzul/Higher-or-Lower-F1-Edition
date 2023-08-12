@@ -33,11 +33,11 @@
 </script>
 
 <!-- Card Wrapper -->
-<button class=" w-1/4 portrait:w-full portrait:h-full landscape:m-3 portrait:mt-4 font-f1display shadow-2xl overflow-hidden saturate-0 hover:scale-105 hover:filter-none duration-500 {colored}" 
+<button class=" w-1/4 portrait:w-full portrait:h-full landscape:m-3 portrait:mt-4 font-f1display shadow-2xl overflow-hidden saturate-0 lg:hover:scale-105 hover:filter-none duration-500 {colored}" 
         on:click={handleClick}>
 
     <!-- Decade text -->
-    <h1 class=" xl:text-8xl lg:text-7xl md:text-5xl sm:text-5xl text-5xl  font-extrabold tracking-tight ps-2 mix-blend-soft-light text-black absolute z-10">{era[0]}<br>{era[1]}</h1>
+    <h1 class=" xl:text-8xl lg:text-7xl md:text-5xl xs:text-4xl text-5xl font-extrabold tracking-tight ps-2 mix-blend-soft-light text-black absolute z-10">{era[0]}<br>{era[1]}</h1>
 
     <!-- Card Image -->
     <div class="w-full h-full bg-cover bg-center portrait:bg-[center_75%] {blurred} hover:blur-none duration-500 hover:animate-horizontal" 

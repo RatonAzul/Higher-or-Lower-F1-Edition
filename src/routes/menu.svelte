@@ -61,9 +61,9 @@
   <header class=" h-1/6 font-f1display-bold w-full flex justify-center pt-4">
     <button on:click={() => {$application_state = "title"}} class="w-full">
       <h1>
-        <span class=" text-f1purple portrait:md:text-5xl lg:text-5xl portrait:text-3xl text-2xl"><img src="imgs/arrow-up.png" alt="arrow pointing upwards" class=" inline-block aspect-square arrow me-2">MORE</span>
-        <span class=" text-white or rotate-180 portrait:md:text-xl md:text-xs lg:text-xl portrait:text-sm text-[0.7rem]">OR</span>
-        <span class=" text-f1yellow portrait:md:text-5xl lg:text-5xl portrait:text-3xl text-2xl ">LESS<img src="imgs/arrow-down.png" alt="arrow pointing downwards" class=" inline-block aspect-square arrow ms-2"></span>
+        <span class=" text-f1purple portrait:md:text-5xl lg:text-5xl portrait:text-3xl text-2xl portrait:xs:text-xl"><img src="imgs/arrow-up.png" alt="arrow pointing upwards" class=" inline-block aspect-square arrow me-2">MORE</span>
+        <span class=" text-white or rotate-180 portrait:md:text-xl md:text-xs lg:text-xl portrait:text-sm text-[0.7rem] portrait:xs:text-[0.6rem]">OR</span>
+        <span class=" text-f1yellow portrait:md:text-5xl lg:text-5xl portrait:text-3xl text-2xl portrait:xs:text-xl">LESS<img src="imgs/arrow-down.png" alt="arrow pointing downwards" class=" inline-block aspect-square arrow ms-2"></span>
       </h1>
       <p class=" text-white portrait:md:text-xl md:text-xs lg:text-xl portrait:text-sm text-[0.7rem]">F1 Edition</p>
     </button>
@@ -86,14 +86,14 @@
       font-f1display text-white w-full h-full pb-8 md:pb-4 sm:pb-0"
       on:click={press_play_button}>
         <p>START GAME</p>
-        <div class=" w-full border-b-4 lg:border-b-8 border-f1red animate-drawBorder duration-700 pb-4"></div>
+        <div class=" w-full border-b-4 lg:border-b-8 border-f1red animate-drawBorder duration-700 md:pb-4 pb-1"></div>
     </button>
 
        {:else} 
-       <button class="xl:text-7xl lg:text-5xl portrait:md:text-4xl md:text-3xl sm:text-2xl text-3xl
-        font-f1display text-f1lightGray w-full h-full pb-8 md:pb-4 sm:pb-0">
+       <button class="xl:text-7xl lg:text-5xl portrait:md:text-4xl md:text-3xl xs:text-2xl text-3xl
+        font-f1display text-f1lightGray w-full h-full pb-8 md:pb-4 xs:pb-2">
         <p>SELECT AT LEAST ONE ERA</p>
-        <div class=" w-full border-b-4 lg:border-b-8 border-f1lightGray animate-drawBorder duration-700 pb-4"></div>
+        <div class=" w-full border-b-4 lg:border-b-8 border-f1lightGray animate-drawBorder duration-700 lg:pb-4 md:pb-3 pb-1"></div>
       </button>
        
        {/if}

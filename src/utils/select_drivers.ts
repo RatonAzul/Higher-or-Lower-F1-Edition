@@ -22,15 +22,22 @@ export async function select_drivers(date_ranges: number[][]) {
 }
 
 // select driver 2 to be different from driver 1 and have at least one different stat
-export async function select_one_driver(date_ranges: number[][], driver_1: Driver) {
-    let driver_2 = await select_random_driver(date_ranges);
+// supports checking for a third driver so it doesnt select driver A against B, then B against A again in the next round
+export async function select_one_driver(date_ranges: number[][], driver_2: Driver, driver_3?: Driver) {
+    let driver_1 = await select_random_driver(date_ranges);
 
-
+    // 
+    if (driver_3 != undefined){
+        while(reroll_is_needed(driver_1, driver_2) || reroll_is_needed(driver_1, driver_3)){
+            driver_1 = await select_random_driver(date_ranges);
+        }
+        return driver_1;
+    }
     while(reroll_is_needed(driver_1, driver_2)){
-        driver_2 = await select_random_driver(date_ranges);
+        driver_1 = await select_random_driver(date_ranges);
     }
 
-    return driver_2;
+    return driver_1;
 }
 
 // select a random range of dates to take the random date from

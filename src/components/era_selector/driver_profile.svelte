@@ -57,9 +57,9 @@
             // circle animation
             await sleep(500);
             $circle_state = 1;
-            await sleep(500);
+            await sleep(700);
             $circle_state = 0;
-            $driver_3 = await select_one_driver($date_ranges, $driver_2);
+            $driver_3 = await select_one_driver($date_ranges, $driver_2, $driver_1);
                            
             // scroll animation plays
             $animation_state = 1;
@@ -74,7 +74,7 @@
             // circle animation
             await sleep(500);
             $circle_state = 2;
-            await sleep(500);
+            await sleep(700);
             $circle_state = 0;
 
             $is_game_over = true;

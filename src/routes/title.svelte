@@ -1,8 +1,11 @@
 <script>
-
-	import { goto } from "$app/navigation";
+	import { onMount } from "svelte";
 	import { application_state } from "../api/store";
+	import { check_last_gp } from "../utils/refresh_active_drivers";
 
+    onMount(async () => {
+        check_last_gp();
+    });
 </script>
 
 

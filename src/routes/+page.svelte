@@ -8,7 +8,7 @@
 
 
 
-<body class=" w-full h-full bg-f1darkGray flex justify-center items-center overflow-hidden">
+<body class=" w-full bg-f1darkGray flex justify-center items-center overflow-hidden">
     {#if $application_state === "title"}
         <Title></Title>
     {:else if $application_state === "menu"}
@@ -17,3 +17,10 @@
         <Game></Game>
     {/if}
 </body>
+
+<style>
+    body{
+        height: 100vh;
+        height: 100dvh;
+    }
+</style>

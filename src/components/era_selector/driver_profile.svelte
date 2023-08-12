@@ -88,7 +88,7 @@
 </script>
 
 
-<body class="text-center flex flex-col">
+<body class="text-center flex flex-col w-full">
     
     <!-- Driver Image -->
     <section class=" overflow-hidden aspect-square xl:h-72 lg:h-48 md:portrait:h-48 h-28 xs:h-24  mb-4 ms-auto me-auto shadow-2xl bg-red">

@@ -89,7 +89,7 @@
             </header>
 
             <!-- Driver Profile -->
-            <div class="{$main_animation[$animation_state]} h-full flex justify-center items-center pt-8">
+            <div class="{$main_animation[$animation_state]} h-full w-full flex justify-center items-center pt-8">
                 <DriverProfile driver={$driver_2}></DriverProfile>     
             </div>
 

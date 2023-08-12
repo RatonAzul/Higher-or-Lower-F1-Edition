@@ -104,7 +104,7 @@
 
 {:else}
 <!-- Losing Screen -->
-<body class=" h-screen text-white font-f1display-bold flex justify-center items-center xs:items-start xs:pt-4 xxs:ps-2">
+<body class=" h-screen text-white font-f1display-bold flex justify-center items-center xs:pb-8">
     
     <div class=" container text-center">
 
@@ -120,7 +120,7 @@
         <p class=" text-f1lightGray font-f1display lg:text-2xl md:text-lg text-base xs:text-sm xxs:text-xs border-f1red border-b-2 lg:pb-5 pb-3 xs:pb-2">"{select_random_game_over_phrase($score)}"</p>
         
         <!-- Try again Button -->
-        <button class=" font-f1display text-white bg-f1red lg:text-2xl md:text-lg text-base xs:text-sm xxs:text-xs mt-7 lg:pt-4 lg:pb-4 pt-2 pb-2 ps-20 pe-20 rounded-lg box-content border-2 border-transparent
+        <button class=" font-f1display text-white bg-f1red lg:text-2xl md:text-lg text-base xs:text-sm xxs:text-xs mt-7 lg:pt-4 lg:pb-4 pt-2 pb-2 ps-20 pe-20 xs:ps-10 xs:pe-10 rounded-lg box-content border-2 border-transparent
          focus:border-white hover:border-white " on:click={reset_game}>
             Try again
         </button>
